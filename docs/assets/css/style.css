@@ -211,3 +211,43 @@ td.word {
     font-size: 14px;
   }
 }
+
+
+/* Progress bar in header */
+.top-progress-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 12px;
+  min-width: 220px;
+}
+
+.top-progress {
+  width: 180px;
+  height: 10px;
+  background: #eef1f5;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.top-progress > .fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #60a5fa, #3b82f6);
+  transition: width 240ms ease;
+}
+
+#top-progress-text {
+  font-size: 0.85rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* responsive */
+@media (max-width:720px) {
+  .top-progress-wrap { min-width: 140px; gap: 8px; }
+  .top-progress { width: 120px; height: 8px; }
+  #top-progress-text { font-size: 0.8rem; }
+}
+/* Progress bar in header */

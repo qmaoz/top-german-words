@@ -6,6 +6,9 @@ class ProgressManager {
     this.fileHandle = null;
     this.progress = { pages: {} };
     this.hideLearned = localStorage.getItem('hideLearned') === 'true';
+    this.totalWords = 0;
+    this.learnedCount = 0;
+    this.observer = null;
     
     this.init();
   }
@@ -14,6 +17,9 @@ class ProgressManager {
     this.btnHide = document.getElementById('toggleHide');
     this.statusEl = document.getElementById('status');
     this.wordCells = Array.from(document.querySelectorAll('td.word'));
+    this.progressBar = document.getElementById('top-progress');
+    this.progressFill = document.getElementById('top-progress-fill');
+    this.progressText = document.getElementById('top-progress-text');
     
     this.setupEventListeners();
     this.boot();
@@ -25,24 +31,50 @@ class ProgressManager {
       this.applyHide(); 
     });
 
-    for (const td of this.wordCells) {
-      td.addEventListener('click', async () => {
-        const w = td.textContent.trim();
-        const set = this.getSet();
-        if (set.has(w)) { 
-          set.delete(w); 
-          td.classList.remove('learned'); 
-        } else { 
-          set.add(w); 
-          td.classList.add('learned'); 
+    // Bind existing cells
+    for (const td of this.wordCells) this.addWordCellListener(td);
+
+    // Observe table body changes to update counts and bind listeners for new rows
+    const tablesRoot = document.querySelector('main') || document.body;
+    if (tablesRoot) {
+      this.observer = new MutationObserver((mutations) => {
+        let needsRecalc = false;
+        for (const m of mutations) {
+          if (m.type === 'childList') {
+            needsRecalc = true;
+            // Bind listeners for any new td.word
+            m.addedNodes.forEach(node => {
+              if (!(node instanceof Element)) return;
+              if (node.matches && node.matches('td.word')) this.addWordCellListener(node);
+              const newCells = node.querySelectorAll ? node.querySelectorAll('td.word') : [];
+              newCells.forEach(td => this.addWordCellListener(td));
+            });
+          }
         }
-        this.setSet(set);
-        
-        // Save progress to IndexedDB
-        await this.saveProgressToDB();
-        this.applyHide();
+        if (needsRecalc) this.recalculateAndUpdateUI();
       });
+      this.observer.observe(tablesRoot, { childList: true, subtree: true });
     }
+  }
+
+  addWordCellListener(td) {
+    if (!td || td.dataset.listenerBound === '1') return;
+    td.dataset.listenerBound = '1';
+    td.addEventListener('click', async () => {
+      const w = td.textContent.trim();
+      const set = this.getSet();
+      if (set.has(w)) {
+        set.delete(w);
+        td.classList.remove('learned');
+      } else {
+        set.add(w);
+        td.classList.add('learned');
+      }
+      this.setSet(set);
+      await this.saveProgressToDB();
+      this.applyHide();
+      this.recalculateAndUpdateUI();
+    });
   }
 
   // Update hide button icon based on state
@@ -96,6 +128,7 @@ class ProgressManager {
       td.title = 'Натисніть, щоб відмітити як вивчене';
     }
     this.applyHide();
+    this.recalculateAndUpdateUI();
   }
 
   applyHide() {
@@ -106,6 +139,34 @@ class ProgressManager {
     }
     localStorage.setItem('hideLearned', this.hideLearned ? 'true' : 'false');
     this.updateHideButton();
+  }
+
+  // Progress UI helpers
+  computeTotals() {
+    // Refresh list in case of DOM changes
+    this.wordCells = Array.from(document.querySelectorAll('td.word'));
+    const set = this.getSet();
+    this.totalWords = this.wordCells.length;
+    // Count learned by class (reflects visual state), fallback to set
+    let learnedByClass = 0;
+    for (const td of this.wordCells) if (td.classList.contains('learned')) learnedByClass++;
+    const learnedBySet = set.size;
+    this.learnedCount = Math.max(learnedByClass, learnedBySet);
+  }
+
+  updateProgressUI() {
+    if (!this.progressBar || !this.progressFill || !this.progressText) return;
+    const total = this.totalWords || 0;
+    const learned = Math.min(this.learnedCount || 0, total);
+    const percent = total === 0 ? 0 : Math.round((learned / total) * 100);
+    this.progressFill.style.width = percent + '%';
+    this.progressBar.setAttribute('aria-valuenow', String(percent));
+    this.progressText.textContent = `${learned}/${total} (${percent}%)`;
+  }
+
+  recalculateAndUpdateUI() {
+    this.computeTotals();
+    this.updateProgressUI();
   }
 
   // File I/O
@@ -185,10 +246,12 @@ class ProgressManager {
       this.statusEl.textContent = 'Прогрес зберігається автоматично.';
       this.applyMarks();
       this.updateHideButton();
+      this.recalculateAndUpdateUI();
     } catch {
       this.statusEl.textContent = 'Прогрес зберігається автоматично.';
       this.applyMarks();
       this.updateHideButton();
+      this.recalculateAndUpdateUI();
     }
   }
 }

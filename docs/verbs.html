@@ -36,7 +36,16 @@
     <h1>Дієслова</h1>
     
     <div class="hint">
-      Натисніть на слово, щоб відмітити як "вивчене". Прогрес зберігається у браузері, тому при очищенні кешу браузера прогрес буде втрачено.
+      Рекомендація по вивченню слів:
+      <ol>
+        <li>Ознайомся зі словом, транскрипцією, перекладом та прикладом вживання.</li>
+        <li>Відволічись, наприклад, ознайомлюючись із наступним словом.</li>
+        <li>Через деякий час повернись до попереднього слова, і дивлячись лише на переклад речення-прикладу спробуй відтворити приклад на німецькій мові.</li>
+        <li>Якщо не вдалося відтворити речення, значить слово ще недостатньо засвоєно. Тому, спробуй знову пройти ці кроки. Якщо вдалося відтворити речення, дивлячись лише на переклад речення, значить слово засвоєно добре.</li>
+        <li>Щоб відмітити слово як "вивчене" натисни на кнопку у першій колонці. Натисніть на німецьке слово або приклад речення, щоб прослухати вимову.</li>
+      </ol>
+      
+      Прогрес прив'язаний до конкретного пристрою і зберігається у браузері, тому при очищенні даних браузера прогрес буде втрачено.
     </div>
 
     <h2>Основні дії</h2>
@@ -44,26 +53,26 @@
       <table class="word-table">
         <thead>
           <tr>
-            <th>№</th><th>Німецьке слово</th><th>Транскрипція</th>
+            <th></th><th>Німецьке слово</th><th>Транскрипція</th>
             <th>Український переклад</th><th>Приклад</th><th>Транскрипція прикладу</th><th>Переклад прикладу</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td class="word">spielen</td><td>шпілєн</td><td>грати</td><td>Ich spiele Fußball.</td><td>іх шпіле фусбал</td><td>Я граю у футбол.</td></tr>
-          <tr><td>2</td><td class="word">kaufen</td><td>кауфен</td><td>купувати</td><td>Ich kaufe Brot.</td><td>іх кауфе брот</td><td>Я купую хліб.</td></tr>
-          <tr><td>3</td><td class="word">machen</td><td>махен</td><td>робити</td><td>Ich mache Hausaufgaben.</td><td>іх махе хаусауфґабен</td><td>Я роблю домашнє завдання.</td></tr>
-          <tr><td>4</td><td class="word">gehen</td><td>ґеен</td><td>йти</td><td>Ich gehe nach Hause.</td><td>іх ґеє нах хаузе</td><td>Я йду додому.</td></tr>
-          <tr><td>5</td><td class="word">finden</td><td>фінден</td><td>знаходити</td><td>Ich finde das Buch.</td><td>іх фінде дас бух</td><td>Я знаходжу цю книгу.</td></tr>
-          <tr><td>6</td><td class="word">sehen</td><td>зеєн</td><td>бачити</td><td>Ich sehe den Hund.</td><td>іх зеє ден гунд</td><td>Я бачу собаку.</td></tr>
-          <tr><td>7</td><td class="word">hören</td><td>хьорен</td><td>чути</td><td>Ich höre Musik.</td><td>іх хьоре музік</td><td>Я слухаю музику.</td></tr>
-          <tr><td>8</td><td class="word">sprechen</td><td>шпрехен</td><td>говорити</td><td>Ich spreche Deutsch.</td><td>іх шпрехе дойч</td><td>Я говорю німецькою.</td></tr>
-          <tr><td>9</td><td class="word">essen</td><td>есен</td><td>їсти</td><td>Ich esse Brot.</td><td>іх ессе брот</td><td>Я їм хліб.</td></tr>
-          <tr><td>10</td><td class="word">trinken</td><td>трінкен</td><td>пити</td><td>Ich trinke Wasser.</td><td>іх трінке васер</td><td>Я п'ю воду.</td></tr>
-          <tr><td>11</td><td class="word">schlafen</td><td>шляфен</td><td>спати</td><td>Ich schlafe gut.</td><td>іх шляфе гут</td><td>Я добре сплю.</td></tr>
-          <tr><td>12</td><td class="word">arbeiten</td><td>арбайтен</td><td>працювати</td><td>Ich arbeite viel.</td><td>іх арбайте філь</td><td>Я багато працюю.</td></tr>
-          <tr><td>13</td><td class="word">lernen</td><td>лернен</td><td>вчитися</td><td>Ich lerne Deutsch.</td><td>іх лерне дойч</td><td>Я вчу німецьку.</td></tr>
-          <tr><td>14</td><td class="word">lesen</td><td>лезен</td><td>читати</td><td>Ich lese ein Buch.</td><td>іх лезе айн бух</td><td>Я читаю книгу.</td></tr>
-          <tr><td>15</td><td class="word">schreiben</td><td>шрайбен</td><td>писати</td><td>Ich schreibe einen Brief.</td><td>іх шрайбе айнен бриф</td><td>Я пишу листа.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">spielen</td><td>шпілєн</td><td>грати</td><td class="german-example">Ich spiele Fußball.</td><td>іх шпіле фусбал</td><td>Я граю у футбол.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">kaufen</td><td>кауфен</td><td>купувати</td><td class="german-example">Ich kaufe Brot.</td><td>іх кауфе брот</td><td>Я купую хліб.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">machen</td><td>махен</td><td>робити</td><td class="german-example">Ich mache Hausaufgaben.</td><td>іх махе хаусауфґабен</td><td>Я роблю домашнє завдання.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">gehen</td><td>ґеен</td><td>йти</td><td class="german-example">Ich gehe nach Hause.</td><td>іх ґеє нах хаузе</td><td>Я йду додому.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">finden</td><td>фінден</td><td>знаходити</td><td class="german-example">Ich finde das Buch.</td><td>іх фінде дас бух</td><td>Я знаходжу цю книгу.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">sehen</td><td>зеєн</td><td>бачити</td><td class="german-example">Ich sehe den Hund.</td><td>іх зеє ден гунд</td><td>Я бачу собаку.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">hören</td><td>хьорен</td><td>чути</td><td class="german-example">Ich höre Musik.</td><td>іх хьоре музік</td><td>Я слухаю музику.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">sprechen</td><td>шпрехен</td><td>говорити</td><td class="german-example">Ich spreche Deutsch.</td><td>іх шпрехе дойч</td><td>Я говорю німецькою.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">essen</td><td>есен</td><td>їсти</td><td class="german-example">Ich esse Brot.</td><td>іх ессе брот</td><td>Я їм хліб.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">trinken</td><td>трінкен</td><td>пити</td><td class="german-example">Ich trinke Wasser.</td><td>іх трінке васер</td><td>Я п'ю воду.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">schlafen</td><td>шляфен</td><td>спати</td><td class="german-example">Ich schlafe gut.</td><td>іх шляфе гут</td><td>Я добре сплю.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">arbeiten</td><td>арбайтен</td><td>працювати</td><td class="german-example">Ich arbeite viel.</td><td>іх арбайте філь</td><td>Я багато працюю.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">lernen</td><td>лернен</td><td>вчитися</td><td class="german-example">Ich lerne Deutsch.</td><td>іх лерне дойч</td><td>Я вчу німецьку.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">lesen</td><td>лезен</td><td>читати</td><td class="german-example">Ich lese ein Buch.</td><td>іх лезе айн бух</td><td>Я читаю книгу.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">schreiben</td><td>шрайбен</td><td>писати</td><td class="german-example">Ich schreibe einen Brief.</td><td>іх шрайбе айнен бриф</td><td>Я пишу листа.</td></tr>
         </tbody>
       </table>
     </div>
@@ -73,17 +82,17 @@
       <table class="word-table">
         <thead>
           <tr>
-            <th>№</th><th>Німецьке слово</th><th>Транскрипція</th>
+            <th></th><th>Німецьке слово</th><th>Транскрипція</th>
             <th>Український переклад</th><th>Приклад</th><th>Транскрипція прикладу</th><th>Переклад прикладу</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td class="word">fahren</td><td>фахрен</td><td>їхати</td><td>Ich fahre mit dem Bus.</td><td>іх фахре міт дем бус</td><td>Я їду автобусом.</td></tr>
-          <tr><td>2</td><td class="word">laufen</td><td>лауфен</td><td>бігти / йти пішки</td><td>Ich laufe zur Schule.</td><td>іх лафе цур шуле</td><td>Я йду до школи пішки.</td></tr>
-          <tr><td>3</td><td class="word">fliegen</td><td>фліґен</td><td>летіти</td><td>Wir fliegen nach Berlin.</td><td>вір фліґен нах берлін</td><td>Ми летимо до Берліна.</td></tr>
-          <tr><td>4</td><td class="word">kommen</td><td>комен</td><td>приходити</td><td>Er kommt spät.</td><td>ер комт шпет</td><td>Він приходить пізно.</td></tr>
-          <tr><td>5</td><td class="word">bleiben</td><td>бляйбен</td><td>залишатись</td><td>Ich bleibe zu Hause.</td><td>іх бляйбе цу хаузе</td><td>Я залишаюсь удома.</td></tr>
-          <tr><td>6</td><td class="word">reisen</td><td>райзен</td><td>подорожувати</td><td>Wir reisen oft.</td><td>вір райзен офт</td><td>Ми часто подорожуємо.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">fahren</td><td>фахрен</td><td>їхати</td><td class="german-example">Ich fahre mit dem Bus.</td><td>іх фахре міт дем бус</td><td>Я їду автобусом.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">laufen</td><td>лауфен</td><td>бігти / йти пішки</td><td class="german-example">Ich laufe zur Schule.</td><td>іх лафе цур шуле</td><td>Я йду до школи пішки.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">fliegen</td><td>фліґен</td><td>летіти</td><td class="german-example">Wir fliegen nach Berlin.</td><td>вір фліґен нах берлін</td><td>Ми летимо до Берліна.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">kommen</td><td>комен</td><td>приходити</td><td class="german-example">Er kommt spät.</td><td>ер комт шпет</td><td>Він приходить пізно.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">bleiben</td><td>бляйбен</td><td>залишатись</td><td class="german-example">Ich bleibe zu Hause.</td><td>іх бляйбе цу хаузе</td><td>Я залишаюсь удома.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">reisen</td><td>райзен</td><td>подорожувати</td><td class="german-example">Wir reisen oft.</td><td>вір райзен офт</td><td>Ми часто подорожуємо.</td></tr>
         </tbody>
       </table>
     </div>
@@ -93,17 +102,17 @@
       <table class="word-table">
         <thead>
           <tr>
-            <th>№</th><th>Німецьке слово</th><th>Транскрипція</th>
+            <th></th><th>Німецьке слово</th><th>Транскрипція</th>
             <th>Український переклад</th><th>Приклад</th><th>Транскрипція прикладу</th><th>Переклад прикладу</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td class="word">sagen</td><td>заген</td><td>казати</td><td>Er sagt die Wahrheit.</td><td>ер загт ді варгайт</td><td>Він каже правду.</td></tr>
-          <tr><td>2</td><td class="word">fragen</td><td>фраґен</td><td>питати</td><td>Ich frage den Lehrer.</td><td>іх фраґе ден леерер</td><td>Я питаю вчителя.</td></tr>
-          <tr><td>3</td><td class="word">antworten</td><td>антвортен</td><td>відповідати</td><td>Er antwortet schnell.</td><td>ер антвортет шнель</td><td>Він відповідає швидко.</td></tr>
-          <tr><td>4</td><td class="word">wissen</td><td>віссен</td><td>знати (факт)</td><td>Ich weiß das.</td><td>іх вайс дас</td><td>Я це знаю.</td></tr>
-          <tr><td>5</td><td class="word">denken</td><td>денкен</td><td>думати</td><td>Ich denke oft daran.</td><td>іх денке офт даран</td><td>Я часто про це думаю.</td></tr>
-          <tr><td>6</td><td class="word">glauben</td><td>ґляубен</td><td>вірити</td><td>Ich glaube dir.</td><td>іх ґляубе дір</td><td>Я тобі вірю.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">sagen</td><td>заген</td><td>казати</td><td class="german-example">Er sagt die Wahrheit.</td><td>ер загт ді варгайт</td><td>Він каже правду.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">fragen</td><td>фраґен</td><td>питати</td><td class="german-example">Ich frage den Lehrer.</td><td>іх фраґе ден леерер</td><td>Я питаю вчителя.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">antworten</td><td>антвортен</td><td>відповідати</td><td class="german-example">Er antwortet schnell.</td><td>ер антвортет шнель</td><td>Він відповідає швидко.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">wissen</td><td>віссен</td><td>знати (факт)</td><td class="german-example">Ich weiß das.</td><td>іх вайс дас</td><td>Я це знаю.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">denken</td><td>денкен</td><td>думати</td><td class="german-example">Ich denke oft daran.</td><td>іх денке офт даран</td><td>Я часто про це думаю.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">glauben</td><td>ґляубен</td><td>вірити</td><td class="german-example">Ich glaube dir.</td><td>іх ґляубе дір</td><td>Я тобі вірю.</td></tr>
         </tbody>
       </table>
     </div>
@@ -113,17 +122,17 @@
       <table class="word-table">
         <thead>
           <tr>
-            <th>№</th><th>Німецьке слово</th><th>Транскрипція</th>
+            <th></th><th>Німецьке слово</th><th>Транскрипція</th>
             <th>Український переклад</th><th>Приклад</th><th>Транскрипція прикладу</th><th>Переклад прикладу</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td class="word">fühlen</td><td>фюлен</td><td>відчувати</td><td>Ich fühle mich gut.</td><td>іх фюле міх гут</td><td>Я почуваюся добре.</td></tr>
-          <tr><td>2</td><td class="word">lieben</td><td>лібен</td><td>любити</td><td>Ich liebe dich.</td><td>іх лібе діх</td><td>Я тебе люблю.</td></tr>
-          <tr><td>3</td><td class="word">mögen</td><td>мьоґен</td><td>подобатись / любити (щось)</td><td>Ich mag Musik.</td><td>іх маг музік</td><td>Мені подобається музика.</td></tr>
-          <tr><td>4</td><td class="word">hassen</td><td>гассен</td><td>ненавидіти</td><td>Ich hasse Krieg.</td><td>іх гассе кріґ</td><td>Я ненавиджу війну.</td></tr>
-          <tr><td>5</td><td class="word">lachen</td><td>лахен</td><td>сміятися</td><td>Sie lacht laut.</td><td>зі лахт лаут</td><td>Вона голосно сміється.</td></tr>
-          <tr><td>6</td><td class="word">weinen</td><td>вайнен</td><td>плакати</td><td>Das Kind weint.</td><td>дас кінд вайнт</td><td>Дитина плаче.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">fühlen</td><td>фюлен</td><td>відчувати</td><td class="german-example">Ich fühle mich gut.</td><td>іх фюле міх гут</td><td>Я почуваюся добре.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">lieben</td><td>лібен</td><td>любити</td><td class="german-example">Ich liebe dich.</td><td>іх лібе діх</td><td>Я тебе люблю.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">mögen</td><td>мьоґен</td><td>подобатись / любити (щось)</td><td class="german-example">Ich mag Musik.</td><td>іх маг музік</td><td>Мені подобається музика.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">hassen</td><td>гассен</td><td>ненавидіти</td><td class="german-example">Ich hasse Krieg.</td><td>іх гассе кріґ</td><td>Я ненавиджу війну.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">lachen</td><td>лахен</td><td>сміятися</td><td class="german-example">Sie lacht laut.</td><td>зі лахт лаут</td><td>Вона голосно сміється.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">weinen</td><td>вайнен</td><td>плакати</td><td class="german-example">Das Kind weint.</td><td>дас кінд вайнт</td><td>Дитина плаче.</td></tr>
         </tbody>
       </table>
     </div>
@@ -133,16 +142,16 @@
       <table class="word-table">
         <thead>
           <tr>
-            <th>№</th><th>Німецьке слово</th><th>Транскрипція</th>
+            <th></th><th>Німецьке слово</th><th>Транскрипція</th>
             <th>Український переклад</th><th>Приклад</th><th>Транскрипція прикладу</th><th>Переклад прикладу</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td class="word">studieren</td><td>штудірен</td><td>навчатись (в університеті)</td><td>Ich studiere Informatik.</td><td>іх штудіре інформатік</td><td>Я навчаюся інформатики.</td></tr>
-          <tr><td>2</td><td class="word">lehren</td><td>леерен</td><td>викладати</td><td>Er lehrt Mathematik.</td><td>ер леерт математики</td><td>Він викладає математику.</td></tr>
-          <tr><td>3</td><td class="word">helfen</td><td>хельфен</td><td>допомагати</td><td>Ich helfe dir.</td><td>іх хельфе дір</td><td>Я допомагаю тобі.</td></tr>
-          <tr><td>4</td><td class="word">benutzen</td><td>бенутцен</td><td>використовувати</td><td>Ich benutze den Computer.</td><td>іх бенуце ден комп'ютер</td><td>Я використовую комп'ютер.</td></tr>
-          <tr><td>5</td><td class="word">üben</td><td>юбен</td><td>тренуватись / вправлятись</td><td>Ich übe jeden Tag.</td><td>іх юбє єден так</td><td>Я тренуюсь щодня.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">studieren</td><td>штудірен</td><td>навчатись (в університеті)</td><td class="german-example">Ich studiere Informatik.</td><td>іх штудіре інформатік</td><td>Я навчаюся інформатики.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">lehren</td><td>леерен</td><td>викладати</td><td class="german-example">Er lehrt Mathematik.</td><td>ер леерт математики</td><td>Він викладає математику.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">helfen</td><td>хельфен</td><td>допомагати</td><td class="german-example">Ich helfe dir.</td><td>іх хельфе дір</td><td>Я допомагаю тобі.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">benutzen</td><td>бенутцен</td><td>використовувати</td><td class="german-example">Ich benutze den Computer.</td><td>іх бенуце ден комп'ютер</td><td>Я використовую комп'ютер.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">üben</td><td>юбен</td><td>тренуватись / вправлятись</td><td class="german-example">Ich übe jeden Tag.</td><td>іх юбє єден так</td><td>Я тренуюсь щодня.</td></tr>
         </tbody>
       </table>
     </div>
@@ -152,19 +161,19 @@
       <table class="word-table">
         <thead>
           <tr>
-            <th>№</th><th>Німецьке слово</th><th>Транскрипція</th>
+            <th></th><th>Німецьке слово</th><th>Транскрипція</th>
             <th>Український переклад</th><th>Приклад</th><th>Транскрипція прикладу</th><th>Переклад прикладу</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td class="word">sein</td><td>зайн</td><td>бути</td><td>Ich bin Student.</td><td>іх бін студент</td><td>Я студент.</td></tr>
-          <tr><td>2</td><td class="word">haben</td><td>хабен</td><td>мати</td><td>Ich habe Hunger.</td><td>іх хабе гунґер</td><td>Я голодний.</td></tr>
-          <tr><td>3</td><td class="word">werden</td><td>верден</td><td>ставати</td><td>Er wird Arzt.</td><td>ер вірд арцт</td><td>Він стає лікарем.</td></tr>
-          <tr><td>4</td><td class="word">können</td><td>кьоннен</td><td>могти</td><td>Ich kann schwimmen.</td><td>іх кан швіммен</td><td>Я вмію плавати.</td></tr>
-          <tr><td>5</td><td class="word">wollen</td><td>воллен</td><td>хотіти</td><td>Ich will essen.</td><td>іх віль ессен</td><td>Я хочу їсти.</td></tr>
-          <tr><td>6</td><td class="word">müssen</td><td>мюссен</td><td>мусити</td><td>Ich muss gehen.</td><td>іх мус ґеєн</td><td>Я мушу йти.</td></tr>
-          <tr><td>7</td><td class="word">sollen</td><td>золлен</td><td>повинен</td><td>Ich soll lernen.</td><td>іх золь лернен</td><td>Я повинен вчитись.</td></tr>
-          <tr><td>8</td><td class="word">dürfen</td><td>дюрфен</td><td>мати дозвіл (могти)</td><td>Du darfst hier parken.</td><td>ду дюрфст хір паркен</td><td>Ти можеш тут паркуватися.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">sein</td><td>зайн</td><td>бути</td><td class="german-example">Ich bin Student.</td><td>іх бін студент</td><td>Я студент.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">haben</td><td>хабен</td><td>мати</td><td class="german-example">Ich habe Hunger.</td><td>іх хабе гунґер</td><td>Я голодний.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">werden</td><td>верден</td><td>ставати</td><td class="german-example">Er wird Arzt.</td><td>ер вірд арцт</td><td>Він стає лікарем.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">können</td><td>кьоннен</td><td>могти</td><td class="german-example">Ich kann schwimmen.</td><td>іх кан швіммен</td><td>Я вмію плавати.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">wollen</td><td>воллен</td><td>хотіти</td><td class="german-example">Ich will essen.</td><td>іх віль ессен</td><td>Я хочу їсти.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">müssen</td><td>мюссен</td><td>мусити</td><td class="german-example">Ich muss gehen.</td><td>іх мус ґеєн</td><td>Я мушу йти.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">sollen</td><td>золлен</td><td>повинен</td><td class="german-example">Ich soll lernen.</td><td>іх золь лернен</td><td>Я повинен вчитись.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">dürfen</td><td>дюрфен</td><td>мати дозвіл (могти)</td><td class="german-example">Du darfst hier parken.</td><td>ду дюрфст хір паркен</td><td>Ти можеш тут паркуватися.</td></tr>
         </tbody>
       </table>
     </div>
@@ -174,17 +183,17 @@
       <table class="word-table">
         <thead>
           <tr>
-            <th>№</th><th>Німецьке слово</th><th>Транскрипція</th>
+            <th></th><th>Німецьке слово</th><th>Транскрипція</th>
             <th>Український переклад</th><th>Приклад</th><th>Транскрипція прикладу</th><th>Переклад прикладу</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td class="word">öffnen</td><td>офнен</td><td>відкривати</td><td>Ich öffne die Tür.</td><td>іх офне ді тюр</td><td>Я відкриваю двері.</td></tr>
-          <tr><td>2</td><td class="word">schließen</td><td>шлісен</td><td>закривати</td><td>Ich schließe das Fenster.</td><td>іх шлісе дас фенстер</td><td>Я закриваю вікно.</td></tr>
-          <tr><td>3</td><td class="word">sitzen</td><td>зітцен</td><td>сидіти</td><td>Ich sitze auf dem Stuhl.</td><td>іх зітце ауф дем штуль</td><td>Я сиджу на стільці.</td></tr>
-          <tr><td>4</td><td class="word">stehen</td><td>штеен</td><td>стояти</td><td>Er steht vor dem Haus.</td><td>ер штет фор дем хаус</td><td>Він стоїть перед будинком.</td></tr>
-          <tr><td>5</td><td class="word">legen</td><td>леґен</td><td>класти</td><td>Ich lege das Buch auf den Tisch.</td><td>іх леґе дас бух ауф ден тіш</td><td>Я кладу книгу на стіл.</td></tr>
-          <tr><td>6</td><td class="word">stellen</td><td>штеллен</td><td>ставити</td><td>Ich stelle die Flasche hier.</td><td>іх штелле ді фляше хір</td><td>Я ставлю пляшку сюди.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">öffnen</td><td>офнен</td><td>відкривати</td><td class="german-example">Ich öffne die Tür.</td><td>іх офне ді тюр</td><td>Я відкриваю двері.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">schließen</td><td>шлісен</td><td>закривати</td><td class="german-example">Ich schließe das Fenster.</td><td>іх шлісе дас фенстер</td><td>Я закриваю вікно.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">sitzen</td><td>зітцен</td><td>сидіти</td><td class="german-example">Ich sitze auf dem Stuhl.</td><td>іх зітце ауф дем штуль</td><td>Я сиджу на стільці.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">stehen</td><td>штеен</td><td>стояти</td><td class="german-example">Er steht vor dem Haus.</td><td>ер штет фор дем хаус</td><td>Він стоїть перед будинком.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">legen</td><td>леґен</td><td>класти</td><td class="german-example">Ich lege das Buch auf den Tisch.</td><td>іх леґе дас бух ауф ден тіш</td><td>Я кладу книгу на стіл.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">stellen</td><td>штеллен</td><td>ставити</td><td class="german-example">Ich stelle die Flasche hier.</td><td>іх штелле ді фляше хір</td><td>Я ставлю пляшку сюди.</td></tr>
         </tbody>
       </table>
     </div>
@@ -194,16 +203,16 @@
       <table class="word-table">
         <thead>
           <tr>
-            <th>№</th><th>Німецьке слово</th><th>Транскрипція</th>
+            <th></th><th>Німецьке слово</th><th>Транскрипція</th>
             <th>Український переклад</th><th>Приклад</th><th>Транскрипція прикладу</th><th>Переклад прикладу</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td class="word">regnen</td><td>реґнен</td><td>дощити</td><td>Heute regnet es.</td><td>хойте реґнет ес</td><td>Сьогодні йде дощ.</td></tr>
-          <tr><td>2</td><td class="word">scheinen</td><td>шайнен</td><td>світити</td><td>Die Sonne scheint.</td><td>ді зонне шайнт</td><td>Світить сонце.</td></tr>
-          <tr><td>3</td><td class="word">beginnen</td><td>беґінен</td><td>починатись</td><td>Der Film beginnt.</td><td>дер фільм беґінт</td><td>Фільм починається.</td></tr>
-          <tr><td>4</td><td class="word">enden</td><td>енден</td><td>закінчуватись</td><td>Der Tag endet.</td><td>дер так ендет</td><td>День закінчується.</td></tr>
-          <tr><td>5</td><td class="word">dauern</td><td>дауерн</td><td>тривати</td><td>Der Kurs dauert drei Stunden.</td><td>дер курс дауерт драй штунден</td><td>Курс триває три години.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">regnen</td><td>реґнен</td><td>дощити</td><td class="german-example">Heute regnet es.</td><td>хойте реґнет ес</td><td>Сьогодні йде дощ.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">scheinen</td><td>шайнен</td><td>світити</td><td class="german-example">Die Sonne scheint.</td><td>ді зонне шайнт</td><td>Світить сонце.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">beginnen</td><td>беґінен</td><td>починатись</td><td class="german-example">Der Film beginnt.</td><td>дер фільм беґінт</td><td>Фільм починається.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">enden</td><td>енден</td><td>закінчуватись</td><td class="german-example">Der Tag endet.</td><td>дер так ендет</td><td>День закінчується.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">dauern</td><td>дауерн</td><td>тривати</td><td class="german-example">Der Kurs dauert drei Stunden.</td><td>дер курс дауерт драй штунден</td><td>Курс триває три години.</td></tr>
         </tbody>
       </table>
     </div>
@@ -213,21 +222,20 @@
       <table class="word-table">
         <thead>
           <tr>
-            <th>№</th><th>Німецьке слово</th><th>Транскрипція</th>
+            <th></th><th>Німецьке слово</th><th>Транскрипція</th>
             <th>Український переклад</th><th>Приклад</th><th>Транскрипція прикладу</th><th>Переклад прикладу</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>1</td><td class="word">wachsen</td><td>вахсен</td><td>рости</td><td>Die Pflanzen wachsen schnell.</td><td>ді пфланцен вахсен шнель</td><td>Рослини ростуть швидко.</td></tr>
-          <tr><td>2</td><td class="word">fallen</td><td>фаллен</td><td>падати</td><td>Die Blätter fallen.</td><td>ді блеттер фаллен</td><td>Листя падає.</td></tr>
-          <tr><td>3</td><td class="word">brechen</td><td>брехен</td><td>ламатись / ламати</td><td>Das Glas bricht.</td><td>дас ґлас бріхт</td><td>Скло ламається.</td></tr>
-          <tr><td>4</td><td class="word">ändern</td><td>ендерн</td><td>змінювати</td><td>Ich ändere den Plan.</td><td>іх ендере ден план</td><td>Я змінюю план.</td></tr>
-          <tr><td>5</td><td class="word">passieren</td><td>пасірен</td><td>траплятися</td><td>Was ist passiert?</td><td>вас іст пасірт</td><td>Що трапилось?</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">wachsen</td><td>вахсен</td><td>рости</td><td class="german-example">Die Pflanzen wachsen schnell.</td><td>ді пфланцен вахсен шнель</td><td>Рослини ростуть швидко.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">fallen</td><td>фаллен</td><td>падати</td><td class="german-example">Die Blätter fallen.</td><td>ді блеттер фаллен</td><td>Листя падає.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">brechen</td><td>брехен</td><td>ламатись / ламати</td><td class="german-example">Das Glas bricht.</td><td>дас ґлас бріхт</td><td>Скло ламається.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">ändern</td><td>ендерн</td><td>змінювати</td><td class="german-example">Ich ändere den Plan.</td><td>іх ендере ден план</td><td>Я змінюю план.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">passieren</td><td>пасірен</td><td>траплятися</td><td class="german-example">Was ist passiert?</td><td>вас іст пасірт</td><td>Що трапилось?</td></tr>
         </tbody>
       </table>
     </div>
   </main>
-
 
   <script src="assets/js/progress.js" data-page-id="verbs"></script>
 </body>

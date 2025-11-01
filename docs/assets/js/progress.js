@@ -16,13 +16,20 @@ class ProgressManager {
   init() {
     this.btnHide = document.getElementById('toggleHide');
     this.statusEl = document.getElementById('status');
-    this.wordCells = Array.from(document.querySelectorAll('td.word'));
     this.progressBar = document.getElementById('top-progress');
     this.progressFill = document.getElementById('top-progress-fill');
     this.progressText = document.getElementById('top-progress-text');
-    
+    this.refreshCells();
+
     this.setupEventListeners();
     this.boot();
+  }
+
+  refreshCells() {
+    // Update cached lists of controls and word cells
+    this.wordCells = Array.from(document.querySelectorAll('td.word'));
+    this.exampleCells = Array.from(document.querySelectorAll('td.german-example'));
+    this.learnBtns = Array.from(document.querySelectorAll('button.learn-btn'));
   }
 
   setupEventListeners() {
@@ -31,10 +38,10 @@ class ProgressManager {
       this.applyHide(); 
     });
 
-    // Bind existing cells
-    for (const td of this.wordCells) this.addWordCellListener(td);
+    // Bind listeners for existing cells
+    this.bindAllListeners();
 
-    // Observe table body changes to update counts and bind listeners for new rows
+    // Observe table changes to update and bind listeners for new rows/buttons/examples
     const tablesRoot = document.querySelector('main') || document.body;
     if (tablesRoot) {
       this.observer = new MutationObserver((mutations) => {
@@ -42,12 +49,10 @@ class ProgressManager {
         for (const m of mutations) {
           if (m.type === 'childList') {
             needsRecalc = true;
-            // Bind listeners for any new td.word
             m.addedNodes.forEach(node => {
               if (!(node instanceof Element)) return;
-              if (node.matches && node.matches('td.word')) this.addWordCellListener(node);
-              const newCells = node.querySelectorAll ? node.querySelectorAll('td.word') : [];
-              newCells.forEach(td => this.addWordCellListener(td));
+              // If table row is added, query all possible relevant children
+              this.bindListenersInNode(node);
             });
           }
         }
@@ -57,18 +62,89 @@ class ProgressManager {
     }
   }
 
-  addWordCellListener(td) {
-    if (!td || td.dataset.listenerBound === '1') return;
-    td.dataset.listenerBound = '1';
-    td.addEventListener('click', async () => {
-      const w = td.textContent.trim();
+  bindAllListeners() {
+    // Always refresh the NodeLists
+    this.refreshCells();
+    // Word cells: pronounce on click, style as pointer
+    for (const td of this.wordCells) this.addWordPronounceListener(td);
+    // Example cells: pronounce on click, style as pointer
+    for (const td of this.exampleCells) this.addExamplePronounceListener(td);
+    // Learn buttons: learn/unlearn control
+    for (const btn of this.learnBtns) this.addLearnButtonListener(btn);
+  }
+
+  bindListenersInNode(node) {
+    // Node may be an added row or cell
+    // td.word
+    if (node.matches && node.matches('td.word')) this.addWordPronounceListener(node);
+    // td.german-example
+    if (node.matches && node.matches('td.german-example')) this.addExamplePronounceListener(node);
+    // button.learn-btn
+    if (node.matches && node.matches('button.learn-btn')) this.addLearnButtonListener(node);
+
+    // or descendants
+    if (node.querySelectorAll) {
+      const words = node.querySelectorAll('td.word');
+      for (const td of words) this.addWordPronounceListener(td);
+      const examples = node.querySelectorAll('td.german-example');
+      for (const td of examples) this.addExamplePronounceListener(td);
+      const buttons = node.querySelectorAll('button.learn-btn');
+      for (const btn of buttons) this.addLearnButtonListener(btn);
+    }
+  }
+
+  addWordPronounceListener(td) {
+    if (!td || td.dataset.pronounceBound === '1') return;
+    td.dataset.pronounceBound = '1';
+    td.style.cursor = 'pointer';
+    td.title = 'Click to hear pronunciation';
+    td.addEventListener('click', (e) => {
+      // Only pronounce, not mark
+      const utter = new SpeechSynthesisUtterance(td.textContent.trim());
+      utter.lang = 'de-DE';
+      speechSynthesis.speak(utter);
+    });
+  }
+
+  addExamplePronounceListener(td) {
+    if (!td || td.dataset.pronounceBound === '1') return;
+    td.dataset.pronounceBound = '1';
+    td.style.cursor = 'pointer';
+    td.title = 'Click to hear pronunciation';
+    td.addEventListener('click', (e) => {
+      // Only pronounce, not mark
+      const utter = new SpeechSynthesisUtterance(td.textContent.trim());
+      utter.lang = 'de-DE';
+      speechSynthesis.speak(utter);
+    });
+  }
+
+  addLearnButtonListener(btn) {
+    if (!btn || btn.dataset.learnBtnBound === '1') return;
+    btn.dataset.learnBtnBound = '1';
+    btn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      // Find the word for this button: should be the next sibling td.word in the same tr
+      const tr = btn.closest('tr');
+      if (!tr) return;
+      const wordCell = tr.querySelector('td.word');
+      if (!wordCell) return;
+      const w = wordCell.textContent.trim();
       const set = this.getSet();
+      let learned;
       if (set.has(w)) {
         set.delete(w);
-        td.classList.remove('learned');
+        wordCell.classList.remove('learned');
+        btn.textContent = '☆';
+        btn.title = 'Відмітити як вивчене';
+        learned = false;
       } else {
         set.add(w);
-        td.classList.add('learned');
+        wordCell.classList.add('learned');
+        btn.textContent = '★';
+        btn.title = 'Скасувати як вивчене';
+        learned = true;
       }
       this.setSet(set);
       await this.saveProgressToDB();
@@ -121,11 +197,23 @@ class ProgressManager {
   }
 
   applyMarks() {
+    this.refreshCells();
     const learned = this.getSet();
+    // Set class and button status for each word row
     for (const td of this.wordCells) {
       const w = td.textContent.trim();
-      td.classList.toggle('learned', learned.has(w));
-      td.title = 'Натисніть, щоб відмітити як вивчене';
+      const isLearned = learned.has(w);
+      td.classList.toggle('learned', isLearned);
+
+      // Find corresponding learn-btn (should be first button in the same row)
+      const tr = td.closest('tr');
+      if (tr) {
+        const btn = tr.querySelector('button.learn-btn');
+        if (btn) {
+          btn.textContent = isLearned ? '★' : '☆';
+          btn.title = isLearned ? 'Скасувати як вивчене' : 'Відмітити як вивчене';
+        }
+      }
     }
     this.applyHide();
     this.recalculateAndUpdateUI();
@@ -144,7 +232,7 @@ class ProgressManager {
   // Progress UI helpers
   computeTotals() {
     // Refresh list in case of DOM changes
-    this.wordCells = Array.from(document.querySelectorAll('td.word'));
+    this.refreshCells();
     const set = this.getSet();
     this.totalWords = this.wordCells.length;
     // Count learned by class (reflects visual state), fallback to set

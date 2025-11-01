@@ -172,13 +172,38 @@ h2 {
 }
 
 /* Word interaction */
-td.word { 
-  cursor: pointer; 
+.word {
+  cursor: pointer;
+  text-decoration: underline dashed #bef264;
+  text-underline-offset: 4px;
 }
 
 .learned { 
   text-decoration: line-through; 
   opacity: 0.6; 
+}
+
+.learn-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  line-height: 1;
+  margin: 0;
+  padding: 4px 7px;
+  border-radius: 6px;
+  transition: background 0.12s;
+}
+
+.learn-btn.marked {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.german-example {
+  cursor: pointer;
+  text-decoration: underline dashed #bef264;
+  text-underline-offset: 4px;
 }
 
 .hint { 

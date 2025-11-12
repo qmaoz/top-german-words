@@ -9,7 +9,7 @@ class ProgressManager {
     this.totalWords = 0;
     this.learnedCount = 0;
     this.observer = null;
-    
+
     this.init();
   }
 
@@ -29,6 +29,7 @@ class ProgressManager {
     // Update cached lists of controls and word cells
     this.wordCells = Array.from(document.querySelectorAll('td.word'));
     this.exampleCells = Array.from(document.querySelectorAll('td.german-example'));
+    this.nounPluralCells = Array.from(document.querySelectorAll('td.noun-plural')); // NEW
     this.learnBtns = Array.from(document.querySelectorAll('button.learn-btn'));
   }
 
@@ -69,6 +70,8 @@ class ProgressManager {
     for (const td of this.wordCells) this.addWordPronounceListener(td);
     // Example cells: pronounce on click, style as pointer
     for (const td of this.exampleCells) this.addExamplePronounceListener(td);
+    // Noun plural cells: pronounce on click, style as pointer (NEW)
+    for (const td of this.nounPluralCells) this.addNounPluralPronounceListener(td);
     // Learn buttons: learn/unlearn control
     for (const btn of this.learnBtns) this.addLearnButtonListener(btn);
   }
@@ -79,6 +82,8 @@ class ProgressManager {
     if (node.matches && node.matches('td.word')) this.addWordPronounceListener(node);
     // td.german-example
     if (node.matches && node.matches('td.german-example')) this.addExamplePronounceListener(node);
+    // td.noun-plural
+    if (node.matches && node.matches('td.noun-plural')) this.addNounPluralPronounceListener(node);
     // button.learn-btn
     if (node.matches && node.matches('button.learn-btn')) this.addLearnButtonListener(node);
 
@@ -88,6 +93,8 @@ class ProgressManager {
       for (const td of words) this.addWordPronounceListener(td);
       const examples = node.querySelectorAll('td.german-example');
       for (const td of examples) this.addExamplePronounceListener(td);
+      const nounPlurals = node.querySelectorAll('td.noun-plural');
+      for (const td of nounPlurals) this.addNounPluralPronounceListener(td);
       const buttons = node.querySelectorAll('button.learn-btn');
       for (const btn of buttons) this.addLearnButtonListener(btn);
     }
@@ -107,6 +114,19 @@ class ProgressManager {
   }
 
   addExamplePronounceListener(td) {
+    if (!td || td.dataset.pronounceBound === '1') return;
+    td.dataset.pronounceBound = '1';
+    td.style.cursor = 'pointer';
+    td.title = 'Click to hear pronunciation';
+    td.addEventListener('click', (e) => {
+      // Only pronounce, not mark
+      const utter = new SpeechSynthesisUtterance(td.textContent.trim());
+      utter.lang = 'de-DE';
+      speechSynthesis.speak(utter);
+    });
+  }
+
+  addNounPluralPronounceListener(td) {
     if (!td || td.dataset.pronounceBound === '1') return;
     td.dataset.pronounceBound = '1';
     td.style.cursor = 'pointer';
@@ -323,14 +343,14 @@ class ProgressManager {
       const { db, storeName } = await this.idbOpen('german-words-db', 'progress');
       const stored = await this.idbGet(db, storeName, 'progress');
       db.close();
-      
+
       if (stored) {
         this.progress = stored;
         this.applyMarks();
         this.statusEl.textContent = 'Прогрес завантажено з бази даних.';
         return;
       }
-      
+
       this.statusEl.textContent = 'Прогрес зберігається автоматично.';
       this.applyMarks();
       this.updateHideButton();
@@ -349,6 +369,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Get page ID from script tag data attribute or default to 'verbs'
   const scriptTag = document.querySelector('script[data-page-id]');
   const pageId = scriptTag ? scriptTag.getAttribute('data-page-id') : 'verbs';
-  
+
   new ProgressManager(pageId);
 });

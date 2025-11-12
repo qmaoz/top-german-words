@@ -206,6 +206,12 @@ h2 {
   text-underline-offset: 4px;
 }
 
+.noun-plural {
+  cursor: pointer;
+  text-decoration: underline dashed #bef264;
+  text-underline-offset: 4px;
+}
+
 .hint { 
   color: #555; 
   font-size: 0.9rem; 

@@ -34,13 +34,18 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   display: flex;
-  gap: 16px;
+  gap: 12px;
   align-items: center;
-  padding: 10px 16px;
+  padding: 8px 12px; /* reduced vertical padding */
+  min-height: 40px;
 }
 
+/* ensure brand doesn't create extra vertical space */
 .brand {
   font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
 }
 
 nav a {
@@ -221,14 +226,14 @@ h2 {
 /* Мобільна адаптація */
 @media (max-width: 720px) {
   body {
-    padding: 16px;
+    padding: 10px;
   }
   .word-table {
     font-size: 13px;
   }
   .word-table th,
   .word-table td {
-    padding: 9px 10px;
+    padding: 8px 10px;
   }
   .word-table thead th {
     text-transform: none;
@@ -242,7 +247,6 @@ h2 {
     font-size: 14px;
   }
 }
-
 
 /* Progress bar in header */
 .top-progress-wrap {
@@ -275,10 +279,173 @@ h2 {
   white-space: nowrap;
 }
 
+/* Compact header - reduce unused vertical space and let nav occupy space beside brand */
+.topbar-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 8px 12px; /* reduced vertical padding */
+  min-height: 40px;
+}
+
+/* ensure brand doesn't create extra vertical space */
+.brand {
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  padding: 0;
+}
+
+/* Mobile header / topbar compacting — overrides for small screens */
+@media (max-width: 720px) {
+  /* reduce overall page padding so header doesn't push content down */
+  body {
+    padding: 10px;
+  }
+
+  /* use two tight rows with min-content rows so height collapses to actual content */
+  .topbar-inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: repeat(2, min-content);
+    gap: 6px;              /* smaller gap */
+    align-items: center;
+    padding: 4px 8px;      /* even less padding on mobile */
+    max-width: 100%;
+  }
+
+  /* brand in first row, left */
+  .brand {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  /* navigation occupies the rest of the first row and wraps horizontally */
+  nav {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 0;
+  }
+
+  nav a {
+    padding: 6px 8px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+  }
+
+  /* progress sits on the left of the second (compact) row */
+  .top-progress-wrap {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 0;
+    min-width: 120px;
+    justify-self: start;
+  }
+
+  .top-progress {
+    width: 140px;
+    height: 8px;
+  }
+
+  .top-progress > .fill {
+    transition: width 240ms ease;
+  }
+
+  #top-progress-text {
+    font-size: 0.8rem;
+    color: var(--muted);
+    white-space: nowrap;
+    max-width: 96px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* controls (eye button, status) align to the right of second row */
+  .header-controls {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    gap: 6px;
+    align-items: center;
+    justify-self: end;
+  }
+
+  .header-controls .status-text {
+    display: none;
+  }
+
+  .icon-btn {
+    padding: 4px 6px;
+    font-size: 14px;
+  }
+
+  /* bring main content up closer to header */
+  main {
+    margin-top: 6px;
+  }
+
+  /* slightly more compact tables on mobile */
+  .word-table {
+    font-size: 13px;
+  }
+
+  .word-table th,
+  .word-table td {
+    padding: 8px 10px;
+  }
+}
+
 /* responsive */
 @media (max-width:720px) {
   .top-progress-wrap { min-width: 140px; gap: 8px; }
   .top-progress { width: 120px; height: 8px; }
   #top-progress-text { font-size: 0.8rem; }
 }
-/* Progress bar in header */
+
+/* Smaller progress bar on very small phones to avoid overlap with the eye button */
+@media (max-width: 425px) {
+  .top-progress-wrap {
+    min-width: 0;
+    gap: 6px;
+    align-items: center;
+  }
+
+  /* make the bar narrower so it fits next to the eye button */
+  .top-progress {
+    width: 26px;
+    height: 8px;
+    flex: 0 0 26px;
+  }
+
+  /* shorten the text and make it able to shrink */
+  #top-progress-text {
+    font-size: 0.75rem;
+    max-width: 66px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* ensure header controls (eye) stays visible and doesn't overlap */
+  .header-controls {
+    gap: 6px;
+    z-index: 2;
+  }
+
+  /* slightly reduce nav link padding so header remains compact */
+  nav a {
+    padding: 6px 6px;
+  }
+}

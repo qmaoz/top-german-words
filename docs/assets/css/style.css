@@ -424,9 +424,9 @@ h2 {
 
   /* make the bar narrower so it fits next to the eye button */
   .top-progress {
-    width: 26px;
+    width: 72px;
     height: 8px;
-    flex: 0 0 26px;
+    flex: 0 0 72px;
   }
 
   /* shorten the text and make it able to shrink */
@@ -447,5 +447,13 @@ h2 {
   /* slightly reduce nav link padding so header remains compact */
   nav a {
     padding: 6px 6px;
+  }
+}
+
+@media (max-width: 375px) {
+  .top-progress {
+    width: 26px;
+    height: 6px;
+    flex: 0 0 26px;
   }
 }

@@ -34,18 +34,7 @@
   <main>
     <h1>Німецькі займенники</h1>
     
-    <div class="hint">
-      Рекомендація по вивченню слів:
-      <ol>
-        <li>Ознайомся зі словом, транскрипцією, перекладом та прикладом вживання.</li>
-        <li>Відволічись, наприклад, ознайомлюючись із наступним словом.</li>
-        <li>Через деякий час повернись до попереднього слова, і дивлячись лише на переклад речення-прикладу спробуй відтворити приклад на німецькій мові.</li>
-        <li>Якщо не вдалося відтворити речення, значить слово ще недостатньо засвоєно. Тому, спробуй знову пройти ці кроки. Якщо вдалося відтворити речення, дивлячись лише на переклад речення, значить слово засвоєно добре.</li>
-        <li>Натисни на слово, щоб відмітити його як "вивчене", коли вважаєш за потрібне, наприклад, якщо легко вдалося відтворити речення на наступний день.</li>
-      </ol>
-      
-      Прогрес прив'язаний до конкретного пристрою і зберігається у браузері, тому при очищенні даних браузера прогрес буде втрачено.
-    </div>
+    <div id="hint"></div>
 
     <h2>Номінатив (Nominativ)</h2>
     <div class="table-wrap">
@@ -165,8 +154,8 @@
         <tbody>
           <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">jemand</td><td>єманд</td><td>хтось</td><td class="german-example">Jemand ruft dich an.</td><td>єманд руфт діхь ан</td><td>Хтось тобі телефонує.</td></tr>
           <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">etwas</td><td>етвас</td><td>щось</td><td class="german-example">Ich brauche etwas Wasser.</td><td>ихь браухе етвас васа</td><td>Мені потрібно трохи води.</td></tr>
-          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">alle</td><td>алле</td><td>всі</td><td class="german-example">Alle kommen heute.</td><td>алле комен хойте</td><td>Усі прийдуть сьогодні.</td></tr>
-          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">man</td><td>ман</td><td>вживається як «хтось» / «люди»</td><td class="german-example">Man sagt, es wird regnen.</td><td>ман заґт ес вірд реґнен</td><td>Кажуть, що буде дощ.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">alle</td><td>алє</td><td>всі</td><td class="german-example">Alle kommen heute.</td><td>алє комен хойте</td><td>Усі прийдуть сьогодні.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">man</td><td>ман</td><td>вживається як «хтось» / «люди»</td><td class="german-example">Man sagt, es wird regnen.</td><td>ман заґт ес вьорд реґнен</td><td>Кажуть, що буде дощ.</td></tr>
           <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">jeder</td><td>їда</td><td>кожен</td><td class="german-example">Jeder weiß das.</td><td>їда вайс дас</td><td>Кожен це знає.</td></tr>
           <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">solcher</td><td>зольхя</td><td>такий</td><td class="german-example">Solcher Lärm ist normal.</td><td>зольхя лєрм іст нормаль</td><td>Такий шум — це нормально.</td></tr>
         </tbody>
@@ -183,10 +172,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">niemand</td><td>німанд</td><td>ніхто</td><td class="german-example">Niemand war da.</td><td>німанд вар да</td><td>Нікого там не було.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">niemand</td><td>німанд</td><td>ніхто</td><td class="german-example">Niemand war da.</td><td>німанд ва да</td><td>Нікого там не було.</td></tr>
           <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">nichts</td><td>ніхьтс</td><td>ніщо</td><td class="german-example">Ich sehe nichts.</td><td>ихь зеє ніхьтс</td><td>Я нічого не бачу.</td></tr>
           <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">kein</td><td>кайн</td><td>жоден / ніякий</td><td class="german-example">Ich habe kein Geld.</td><td>ихь хабе кайн ґельд</td><td>У мене немає грошей.</td></tr>
-          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">keiner</td><td>кайна</td><td>ніхто з</td><td class="german-example">Keiner versteht mich.</td><td>кайна ферштейт міх</td><td>Ніхто мене не розуміє.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">keiner</td><td>кайна</td><td>ніхто з</td><td class="german-example">Keiner versteht mich.</td><td>кайна фегштейт міх</td><td>Ніхто мене не розуміє.</td></tr>
         </tbody>
       </table>
     </div>
@@ -202,12 +191,12 @@
         </thead>
         <tbody>
           <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">sich</td><td>зіхь</td><td>себе / собі</td><td class="german-example">Er wäscht sich.</td><td>еа вешт зіхь</td><td>Він миється.</td></tr>
-          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">sich (pl.)</td><td>зіхь</td><td>себе (вони)</td><td class="german-example">Sie erinnern sich.</td><td>зі еринерн зіхь</td><td>Вони згадують.</td></tr>
+          <tr><td><button class="learn-btn" title="Відмітити як вивчене">☆</button></td><td class="word">sich (pl.)</td><td>зіхь</td><td>себе (вони)</td><td class="german-example">Sie erinnern sich.</td><td>зі егинен зіхь</td><td>Вони згадують.</td></tr>
         </tbody>
       </table>
     </div>
   </main>
 
-  <script src="assets/js/progress.js" data-page-id="pronouns"></script>
+  <script src="assets/js/main.js" data-page-id="pronouns"></script>
 </body>
 </html>

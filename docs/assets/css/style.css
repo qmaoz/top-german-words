@@ -217,7 +217,7 @@ h2 {
   text-underline-offset: 4px;
 }
 
-.hint { 
+#hint { 
   color: #555; 
   font-size: 0.9rem; 
   margin-bottom: 10px; 

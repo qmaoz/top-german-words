@@ -29,7 +29,7 @@ class ProgressManager {
     // Update cached lists of controls and word cells
     this.wordCells = Array.from(document.querySelectorAll('td.word'));
     this.exampleCells = Array.from(document.querySelectorAll('td.german-example'));
-    this.nounPluralCells = Array.from(document.querySelectorAll('td.noun-plural')); // NEW
+    this.nounPluralCells = Array.from(document.querySelectorAll('td.noun-plural'));
     this.learnBtns = Array.from(document.querySelectorAll('button.learn-btn'));
   }
 
@@ -42,7 +42,7 @@ class ProgressManager {
     // Bind listeners for existing cells
     this.bindAllListeners();
 
-    // Observe table changes to update and bind listeners for new rows/buttons/examples
+    // Observe table changes to update and bind listeners for new rows / buttons / examples
     const tablesRoot = document.querySelector('main') || document.body;
     if (tablesRoot) {
       this.observer = new MutationObserver((mutations) => {
@@ -70,7 +70,7 @@ class ProgressManager {
     for (const td of this.wordCells) this.addWordPronounceListener(td);
     // Example cells: pronounce on click, style as pointer
     for (const td of this.exampleCells) this.addExamplePronounceListener(td);
-    // Noun plural cells: pronounce on click, style as pointer (NEW)
+    // Noun plural cells: pronounce on click, style as pointer
     for (const td of this.nounPluralCells) this.addNounPluralPronounceListener(td);
     // Learn buttons: learn/unlearn control
     for (const btn of this.learnBtns) this.addLearnButtonListener(btn);
@@ -269,7 +269,7 @@ class ProgressManager {
     const percent = total === 0 ? 0 : Math.round((learned / total) * 100);
     this.progressFill.style.width = percent + '%';
     this.progressBar.setAttribute('aria-valuenow', String(percent));
-    this.progressText.textContent = `${learned}/${total} (${percent}%)`;
+    this.progressText.textContent = `${learned} / ${total} (${percent}%)`;
   }
 
   recalculateAndUpdateUI() {

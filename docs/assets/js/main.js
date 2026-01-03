@@ -109,6 +109,7 @@ class ProgressManager {
       // Only pronounce, not mark
       const utter = new SpeechSynthesisUtterance(td.textContent.trim());
       utter.lang = 'de-DE';
+      utter.rate = 1;
       speechSynthesis.speak(utter);
     });
   }
@@ -122,6 +123,7 @@ class ProgressManager {
       // Only pronounce, not mark
       const utter = new SpeechSynthesisUtterance(td.textContent.trim());
       utter.lang = 'de-DE';
+      utter.rate = 1.8;
       speechSynthesis.speak(utter);
     });
   }
@@ -231,7 +233,7 @@ class ProgressManager {
         const btn = tr.querySelector('button.learn-btn');
         if (btn) {
           btn.textContent = isLearned ? '★' : '☆';
-          btn.title = isLearned ? 'Скасувати як вивчене' : 'Відмітити як вивчене';
+          btn.title = isLearned ? 'Відмітити як невивчене' : 'Відмітити як вивчене';
         }
       }
     }
@@ -371,6 +373,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const pageId = scriptTag ? scriptTag.getAttribute('data-page-id') : 'verbs';
 
   new ProgressManager(pageId);
+
+  // Add title to all .learn-btn buttons if not set (for initial state)
+  document.querySelectorAll('button.learn-btn').forEach(btn => {
+    if (!btn.title) btn.title = 'Відмітити як вивчене';
+  });
 
   const hint = document.getElementById('hint');
 

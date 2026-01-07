@@ -123,7 +123,7 @@ class ProgressManager {
       // Only pronounce, not mark
       const utter = new SpeechSynthesisUtterance(td.textContent.trim());
       utter.lang = 'de-DE';
-      utter.rate = 1.8;
+      utter.rate = 1;
       speechSynthesis.speak(utter);
     });
   }

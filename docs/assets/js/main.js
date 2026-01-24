@@ -106,7 +106,7 @@ class ProgressManager {
     td.style.cursor = 'pointer';
     td.title = 'Click to hear pronunciation';
     td.addEventListener('click', (e) => {
-      // Only pronounce, not mark
+      // Only pronounce, not mark as "learned"
       const utter = new SpeechSynthesisUtterance(td.textContent.trim());
       utter.lang = 'de-DE';
       utter.rate = 1;
@@ -120,7 +120,7 @@ class ProgressManager {
     td.style.cursor = 'pointer';
     td.title = 'Click to hear pronunciation';
     td.addEventListener('click', (e) => {
-      // Only pronounce, not mark
+      // Only pronounce, not mark as "learned"
       const utter = new SpeechSynthesisUtterance(td.textContent.trim());
       utter.lang = 'de-DE';
       utter.rate = 1;

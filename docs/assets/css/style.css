@@ -1,3 +1,8 @@
+@media (max-width: 720px) {
+  .topbar {
+    position: static !important;
+  }
+}
 :root {
   --bg: #f2f4f8;
   --card: #fff;
@@ -22,8 +27,7 @@ body {
 
 /* Верхня навігація */
 .topbar {
-  position: sticky;
-  top: 0;
+  position: static;
   z-index: 10;
   backdrop-filter: saturate(1.2) blur(8px);
   background: rgba(255, 255, 255, .7);
@@ -149,6 +153,8 @@ h2 {
   border-bottom: none;
 }
 
+/* Header controls */
+/* Header controls */
 /* Header controls */
 .header-controls { 
   display: flex; 
